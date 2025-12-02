@@ -35,7 +35,8 @@ jobs:
       - name: display hello
         run: echo "hello"
 
-  deploy:
+  deploy_job:
+    needs: setup_job
     runs-on: macos-latest
     steps:
       - name: mac hello
