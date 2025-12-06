@@ -11,6 +11,8 @@ on:
       - dev
   # schedule:
   # - cron: "*/1 * * * *"
+env: 
+  region_name: us-east-1  
 
 jobs:
 
@@ -20,13 +22,15 @@ jobs:
       - name: checkout repo
         uses: actions/checkout@v4
       - name: create file
+        env:
+          file_name: github-action.txt
         run: |
-          touch github-action.txt
-          echo "from first job" > githu-action.txt
+          touch $file_name
+          echo "from first job" > github-action.txt
           ls -la
           echo hello world
           cat README.md
-      - name: upload artifact 
+      - name: upload my artifact 
         uses: actions/upload-artifact@v4  
         with: 
               name: my-file
